@@ -21,15 +21,11 @@ from bookr.views import profile
 
 
 
-urlpatterns = [
-<<<<<<< HEAD
-path('admin/', admin.site.urls),
-=======
+urlpatterns = [path('admin/', admin.site.urls),
     path('accounts/', include(('django.contrib.auth.urls', 'auth'),
                               namespace='accounts')),
     path('accounts/profile/', profile, name='profile'),
     path('admin/', admin.site.urls),
->>>>>>> dev
     path('', include('reviews.urls')),
 ]
 

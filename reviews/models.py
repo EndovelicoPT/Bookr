@@ -49,6 +49,9 @@ class Contributor(models.Model):
                                   help_text="The contributor's last name or names.")
     email = models.EmailField(help_text="The contact email for the contributor.")
 
+    def number_contributions(self):
+        return self.bookcontributor_set.count()
+
     def __str__(self):
         return "{}, ({})".format(self.last_names, self.first_names)
 
