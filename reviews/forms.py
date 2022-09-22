@@ -1,5 +1,7 @@
 from django import forms
 from .models import Publisher, Review, Book
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 
 class SearchForm(forms.Form):
@@ -9,6 +11,11 @@ class SearchForm(forms.Form):
                                       ("title", "Title"),
                                       ("contributor", "Contributor")
                                   ))
+    def __int__(self, *args, **kwargs):
+        super().__int__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = "get"
+        self.helper.add_input(Submit("", "Search"))
 
 class PublisherForm(forms.ModelForm):
     class Meta:
