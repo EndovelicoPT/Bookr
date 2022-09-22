@@ -34,6 +34,7 @@ class Dev(Configuration):
 
     INSTALLED_APPS = [
         'bookr_admin.apps.BookrAdminConfig',
+        'django.contrib.sites',
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
@@ -44,6 +45,10 @@ class Dev(Configuration):
         'reviews',
         'debug_toolbar',
         'crispy_forms',
+        'allauth',
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.github',
+        'allauth.socialaccount.providers.google',
     ]
 
     MIDDLEWARE = [
@@ -128,6 +133,7 @@ class Dev(Configuration):
     MEDIA_URL = '/media/'
     INTERNAL_IPS = ['127.0.0.1']
     CRISPY_TEMPLATE_PACK = 'bootstrap4'
+    SITE_ID = 1
 
 
 class Prod(Dev):
