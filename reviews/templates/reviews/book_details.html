@@ -1,7 +1,6 @@
 {% extends 'reviews/base.html' %}
 
 {% block content %}
-
 <h1>Book Details</h1>
 <li class="list-group-item">
       <span class="text-info">Title: </span> <span>{{ book.title }}</span>
@@ -13,7 +12,6 @@
       <span class="text-info">Rating: </span><span class="badge badge-primary badge-pill">{{ book_rating }}</span>
       <br>
 </li>
-
 
 <h1>Review Comments</h1>
   {% for item in review %}
@@ -31,6 +29,5 @@
         <br>
         </li></div>
  {% endfor %}
-
 
 {% endblock %}
