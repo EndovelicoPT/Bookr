@@ -3,10 +3,12 @@ from reviews.models import (Publisher, Contributor, BookContributor, Book, \
                             Review)
 
 class BookAdmin(admin.ModelAdmin):
-    date_hierarchy = 'publication_date'
-    list_display = ('title', 'isbn13')
-    list_filter = ('publisher', 'publication_date')
-    search_fields = ('title', 'isbn', 'publisher__name')
+    model = Book
+    list_display = ('title', 'isbn', 'get_publisher', 'publication_date')
+    search_fields = ['title', 'publisher_name']
+
+    def get_publisher(self, obj):
+        return obj.publisher.name
 
 class ReviewAdmin(admin.ModelAdmin):
     exclude = ('date_edited'),
@@ -18,6 +20,7 @@ class ContributorAdmin(admin.ModelAdmin):
     list_display = ('last_names', 'first_names')
     list_filter = ('last_names'),
     search_fields = ('last_names', 'first_names')
+
 
 # Register your models here.
 admin.site.register(Publisher)
